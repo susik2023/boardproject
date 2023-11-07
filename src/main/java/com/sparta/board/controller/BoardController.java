@@ -32,7 +32,7 @@ public class BoardController {
     @GetMapping("/boards/{id}")
     public Board getBoard(@PathVariable Long id){
 
-        return boardService.findBoard(id);
+        return boardService.getBoard(id);
     }
 
 

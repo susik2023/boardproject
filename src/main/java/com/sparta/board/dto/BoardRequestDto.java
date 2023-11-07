@@ -1,7 +1,8 @@
 package com.sparta.board.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-
+@AllArgsConstructor
 @Getter
 public class BoardRequestDto {
 

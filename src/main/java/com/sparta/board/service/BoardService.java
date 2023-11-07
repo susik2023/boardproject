@@ -32,14 +32,21 @@ public class BoardService {
 
         return boardRepository.findAll().stream().map(BoardResponseDto::new).toList();
     }
+    public Board getBoard(Long id){
+        Board board = findBoard(id);
+        return board;
+    }
 
 
     @Transactional
     public Long updateBoard(Long id, BoardRequestDto boardRequestDto) {
 
         Board board = findBoard(id);
+        if(board.getPassword()!=boardRequestDto.getPassword()){
+            board.update(boardRequestDto);
+            System.out.println("수정 완료");
+        }else throw new PasswordExpiredException("비밀번호가 일치하지 않습니다.");
 
-        board.update(boardRequestDto);
         return id;
     }
 
@@ -54,7 +61,7 @@ public class BoardService {
 
     }
 
-    public Board findBoard(Long id) {
+    private Board findBoard(Long id) {
 
         return boardRepository.findById(id).orElseThrow(() ->
                 new IllegalArgumentException("선택한 보드가 존재하지 않습니다.")
