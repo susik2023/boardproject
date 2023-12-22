@@ -4,7 +4,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.1.3'
 }
 
-group = 'com.sparta'
+group = 'com.sparta.boardproject'
 version = '0.0.1-SNAPSHOT'
 
 java {
@@ -25,15 +25,27 @@ dependencies {
 
     // JPA 설정
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    //jpa 시큐리티
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    //발리데이션
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    //웹
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5'
 
     // MySQL
     implementation 'mysql:mysql-connector-java:8.0.28'
 
+    //jwt
+    compileOnly group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.5'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.5'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.5'
+
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
 
 }
 
